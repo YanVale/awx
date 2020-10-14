@@ -70,8 +70,8 @@
         #file=group_vars/Ubuntu.yml
       #when: '"Ubuntu" in vm_template'
 
-    - name: Set preseed boot options
-      command: xe vm-param-set uuid={{ vmuuid.stdout }} PV-args="{{ boot_args }}"
+    #- name: Set preseed boot options
+      #command: xe vm-param-set uuid={{ vmuuid.stdout }} PV-args="{{ boot_args }}"
 
     #- name: Set install repository
       #command: xe vm-param-set uuid={{ vmuuid.stdout }} other-config:install-repository={{ install_repository }}
