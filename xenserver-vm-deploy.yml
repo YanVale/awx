@@ -1,5 +1,5 @@
 ---
-- name: Deploy new Debian or Ubuntu VPS
+- name: Deploy VM Xenserver-T620-Novo
   hosts: xenservers
   remote_user: root
   vars_files:
