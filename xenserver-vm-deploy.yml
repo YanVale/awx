@@ -52,9 +52,13 @@
 
     - name: Attach VM to {{ network_name }}
       command: xe vif-create vm-uuid={{ vmuuid.stdout }} network-uuid={{ networkuuid.stdout }} mac=random device=0
+    
+    - name: Get UUID VIF of VM
+      command: xe vm-vif-list uuid={{ vmuuid.stdout }} --minimal
+      register: vifuuid
       
     - name: Attach Ip Address and Gateway to Vm
-      command: xe vif-configure-ipv4 uuid={{ networkuuid.stdout }} mode=static address={{ ipaddess }} gateway={{ gateway }}      
+      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address={{ ipaddess }} gateway={{ gateway }}      
 
     #- name: Load bootargs and install repo for Debian install
       #include_vars:
