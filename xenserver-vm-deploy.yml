@@ -58,7 +58,7 @@
       register: vifuuid
       
     - name: Attach Ip Address and Gateway to Vm
-      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address=192.168.10.200/24 gateway=192.168.10.1      
+      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address={{ ipaddress }} gateway={{ gateway }}      
       
     - name: Start Vm 
       command: xe vm-start uuid={{ vmuuid.stdout }}
