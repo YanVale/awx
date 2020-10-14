@@ -58,7 +58,7 @@
       register: vifuuid
       
     - name: Attach Ip Address and Gateway to Vm
-      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address={{ ipaddess }} gateway={{ gateway }}      
+      command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address=192.168.10.200/24 gateway=192.168.10.1      
 
     #- name: Load bootargs and install repo for Debian install
       #include_vars:
