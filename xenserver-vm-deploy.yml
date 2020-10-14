@@ -61,7 +61,7 @@
       command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address=192.168.10.200/24 gateway=192.168.10.1      
       
     - name: Start Vm 
-      command: xe vm-start uuid-{{ vmuuid.stdout }}
+      command: xe vm-start uuid={{ vmuuid.stdout }}
 
     #- name: Load bootargs and install repo for Debian install
       #include_vars:
