@@ -85,14 +85,14 @@
     #- name: Boot VM and start preseed installation
       #command: xe vm-start uuid={{ vmuuid.stdout }}
 
-    - name: Get the boot time for the VM
-      command: xe vm-param-get param-name=start-time  uuid={{ vmuuid.stdout}}
-      register: boottime
+    #- name: Get the boot time for the VM
+      #command: xe vm-param-get param-name=start-time  uuid={{ vmuuid.stdout}}
+      #register: boottime
 
-    - name: Watch for the first reboot
-      shell: export starttime={{ boottime.stdout }}; while [[ ${starttime} == {{ boottime.stdout }} ]]; do sleep 15; starttime=`xe vm-param-get param-name=start-time uuid={{ vmuuid.stdout }}`; done
-      async: 1800
-      poll: 15
+    #- name: Watch for the first reboot
+      #shell: export starttime={{ boottime.stdout }}; while [[ ${starttime} == {{ boottime.stdout }} ]]; do sleep 15; starttime=`xe vm-param-get param-name=start-time uuid={{ vmuuid.stdout }}`; done
+      #async: 1800
+      #poll: 15
 
     #- name: Set the name of the xentools ISO file | Xenserver 6
       #set_fact:
@@ -107,14 +107,14 @@
     #- name: Insert Xentools CD in CDROM drive
       #command: xe vm-cd-insert cd-name={{ xentools_iso }} vm={{ vmuuid.stdout }}
 
-    - name: Get the last boot time for the VM
-      command: xe vm-param-get param-name=start-time  uuid={{ vmuuid.stdout}}
-      register: boottime
+    #- name: Get the last boot time for the VM
+      #command: xe vm-param-get param-name=start-time  uuid={{ vmuuid.stdout}}
+      #register: boottime
 
-    - name: Watch for the last reboot
-      shell: export starttime={{ boottime.stdout }}; while [[ ${starttime} == {{ boottime.stdout }} ]]; do sleep 15; starttime=`xe vm-param-get param-name=start-time uuid={{ vmuuid.stdout }}`; done
-      async: 1800
-      poll: 15
+    #- name: Watch for the last reboot
+      #shell: export starttime={{ boottime.stdout }}; while [[ ${starttime} == {{ boottime.stdout }} ]]; do sleep 15; starttime=`xe vm-param-get param-name=start-time uuid={{ vmuuid.stdout }}`; done
+      #async: 1800
+      #poll: 15
 
     - name: Add host to runtime inventory
       add_host:
