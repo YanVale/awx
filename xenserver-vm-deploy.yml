@@ -26,7 +26,7 @@
       register: networkuuid
 
     - name: Deploy new VM
-      command: xe vm-install template={{ templateuuid.stdout }} new-name-label="{{ vm_name }} - {{ ipaddress }} - {{ vps_type }}" sr-uuid={{ sruuid.stdout }}
+      command: xe vm-install template={{ templateuuid.stdout }} new-name-label="{{ vm_name }}" sr-uuid={{ sruuid.stdout }}
       register: vmuuid
 
     - name: Set vcpu priority
@@ -50,8 +50,8 @@
     #- name: Set memory
       #command: xe vm-memory-limits-set uuid={{ vmuuid.stdout }} dynamic-min="{{ memory }}" dynamic-max="{{ memory }}" static-max="{{ memory }}" static-min="{{ memory }}"
 
-    #- name: Attach VM to {{ network_name }}
-      #command: xe vif-create vm-uuid={{ vmuuid.stdout }} network-uuid={{ networkuuid.stdout }} mac=random device=0
+    - name: Attach VM to {{ network_name }}
+      command: xe vif-create vm-uuid={{ vmuuid.stdout }} network-uuid={{ networkuuid.stdout }} mac=random device=0
 
     #- name: Load bootargs and install repo for Debian install
       #include_vars:
