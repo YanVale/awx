@@ -59,6 +59,9 @@
       
     - name: Attach Ip Address and Gateway to Vm
       command: xe vif-configure-ipv4 uuid={{ vifuuid.stdout }} mode=static address=192.168.10.200/24 gateway=192.168.10.1      
+      
+    - name: Start Vm 
+      command: xe vm-start uuid-{{ vmuuid.stdout }}
 
     #- name: Load bootargs and install repo for Debian install
       #include_vars:
@@ -103,9 +106,6 @@
 
     #- name: Insert Xentools CD in CDROM drive
       #command: xe vm-cd-insert cd-name={{ xentools_iso }} vm={{ vmuuid.stdout }}
-      
-    - name: Start Vm 
-      command: xe vm-start uuid-{{ vmuuid.stdout }}
 
     - name: Get the last boot time for the VM
       command: xe vm-param-get param-name=start-time  uuid={{ vmuuid.stdout}}
