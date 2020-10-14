@@ -103,6 +103,9 @@
 
     #- name: Insert Xentools CD in CDROM drive
       #command: xe vm-cd-insert cd-name={{ xentools_iso }} vm={{ vmuuid.stdout }}
+      
+    - name: Start Vm 
+      command: xe vm-start uuid-{{ vmuuid.stdout }}
 
     - name: Get the last boot time for the VM
       command: xe vm-param-get param-name=start-time  uuid={{ vmuuid.stdout}}
